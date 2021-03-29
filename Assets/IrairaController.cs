@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IrairaController : MonoBehaviour
 {
@@ -67,6 +68,16 @@ public class IrairaController : MonoBehaviour
     {
         // 「GameDirector」スクリプトの「Out」メソッドを呼び出す
         ui.Out();
+
+        Invoke("Failure", 1.6f);
+    }
+
+    /// <summary>
+    /// 「GameOverScene」に画面遷移
+    /// </summary>
+    public void Failure()
+    {
+        SceneManager.LoadScene("GameOverScene");
     }
 
     /// <summary>
@@ -77,6 +88,15 @@ public class IrairaController : MonoBehaviour
     {
         // 「GameDirector」スクリプトの「Goal」メソッドを呼び出す
         ui.Goal();
+
+        Invoke("Success", 1.6f);
     }
 
+    /// <summary>
+    /// 「GameClearScene」に画面遷移
+    /// </summary>
+    public void Success()
+    {
+        SceneManager.LoadScene("GameClearScene");
+    }
 }
